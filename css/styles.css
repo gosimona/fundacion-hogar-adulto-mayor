@@ -363,6 +363,7 @@ section.section { padding: var(--space-xxl) 0; }
 .team-photo { aspect-ratio: 1 / 1; min-height: 0; margin-bottom: 0.9rem; border-radius: var(--radius-lg); }
 .team-card h4 { font-size: 1.05rem; margin-bottom: 0.2rem; }
 .team-role { color: var(--color-text-soft); font-size: 0.88rem; }
+.team-note { text-align: center; color: var(--color-text-soft); font-size: 0.9rem; max-width: 620px; margin: 1.5rem auto 0; }
 @media (max-width: 860px) { .team-grid { grid-template-columns: repeat(2, 1fr); } }
 
 .timeline { display: flex; flex-direction: column; gap: 1.25rem; max-width: 640px; margin: 0 auto; }
@@ -405,6 +406,7 @@ section.section { padding: var(--space-xxl) 0; }
 /* ---------- Proyectos ---------- */
 .section-projects { background: var(--color-white); }
 .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.projects-grid--two { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
 .project-card {
   border-radius: var(--radius-md);
   overflow: hidden;
@@ -478,6 +480,32 @@ section.section { padding: var(--space-xxl) 0; }
 .impact-amount { font-family: var(--font-display); font-weight: 600; color: var(--color-blue-deep); }
 .impact-list li span:last-child { color: var(--color-text-soft); font-size: 0.92rem; }
 @media (max-width: 860px) { .donation-layout { grid-template-columns: 1fr; } }
+
+.donation-kind {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  text-align: center;
+}
+.donation-kind h3 { font-size: 1.25rem; margin-bottom: 0.6rem; }
+.donation-kind p { color: var(--color-text-soft); margin-bottom: 1.25rem; }
+.kind-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.kind-list li {
+  background: var(--color-green-whisper);
+  color: var(--color-blue-deep);
+  border-radius: 999px;
+  padding: 0.6rem 1.1rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+}
 
 .legal-trust { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
 .legal-item {
