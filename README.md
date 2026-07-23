@@ -5,9 +5,12 @@ Sitio web institucional de una sola página (single-page) para una fundación ge
 ## Estructura
 
 ```
-index.html      Estructura y contenido de todas las secciones (Inicio, Sobre Nosotros, Servicios, Proyectos, Donaciones, Voluntariado, Contacto)
-css/styles.css  Sistema de diseño (colores, tipografía, componentes, responsive)
-js/main.js      Header sticky, menú móvil, animaciones de scroll, contadores, formulario
+index.html               Estructura y contenido de todas las secciones (Inicio, Sobre Nosotros, Servicios, Proyectos, Donaciones, Voluntariado, Contacto)
+css/styles.css           Sistema de diseño (colores, tipografía, componentes, responsive)
+js/main.js               Header sticky, menú móvil, animaciones de scroll, contadores, formulario
+assets/images/logo-icon.png     Logo recortado (solo ícono), fondo transparente — usado en el header
+assets/images/logo-full.png     Logo completo (ícono + nombre + lema), fondo transparente — usado en el footer
+assets/images/logo-original.jpeg  Archivo original del logo entregado por la fundación, sin procesar
 ```
 
 ## Previsualizar localmente
