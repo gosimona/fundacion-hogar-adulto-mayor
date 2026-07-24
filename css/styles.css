@@ -394,6 +394,31 @@ section.section { padding: var(--space-xxl) 0; }
 .timeline-year { font-family: var(--font-display); font-weight: 600; color: var(--color-blue); font-size: 1.2rem; }
 .timeline-item p { color: var(--color-text-soft); }
 
+/* ---------- En los medios ---------- */
+.section-media { background: var(--color-sand); }
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  align-items: start;
+}
+.media-card { display: flex; justify-content: center; }
+.media-card--press {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
+}
+.press-outlet { font-size: 0.8rem; color: var(--color-text-soft); text-transform: uppercase; letter-spacing: 0.05em; margin: 0.9rem 0 0.6rem; }
+.media-card--press h3 { font-size: 1.3rem; margin-bottom: 0.75rem; }
+.media-card--press h3 a { color: var(--color-blue-deep); }
+.media-card--press h3 a:hover { text-decoration: underline; }
+.media-card--press > p { color: var(--color-text-soft); margin-bottom: 1.25rem; }
+.press-link { color: var(--color-blue); font-weight: 600; font-size: 0.92rem; margin-top: auto; }
+.press-link:hover { text-decoration: underline; }
+
 /* ---------- Testimonios / prueba social ---------- */
 .section-testimonials { background: var(--color-white); padding-bottom: var(--space-xl); }
 .section-testimonials .section-heading { margin-bottom: var(--space-lg); }
