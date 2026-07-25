@@ -650,6 +650,21 @@ section.section { padding: var(--space-xxl) 0; }
 .volunteer-card p { font-size: 0.9rem; color: var(--color-text-soft); }
 @media (max-width: 900px) { .volunteer-profiles { grid-template-columns: repeat(2, 1fr); } }
 
+.volunteer-video {
+  max-width: 720px;
+  margin: 0 auto var(--space-lg);
+  text-align: center;
+}
+.volunteer-video h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+.volunteer-video > p { color: var(--color-text-soft); margin-bottom: 1.25rem; }
+.volunteer-video-player {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  background: #000;
+  display: block;
+}
+
 .testimonial {
   display: grid;
   grid-template-columns: 160px 1fr;
