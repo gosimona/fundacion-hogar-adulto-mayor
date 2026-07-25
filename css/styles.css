@@ -699,6 +699,12 @@ section.section { padding: var(--space-xxl) 0; }
 
 .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
 .contact-map { min-height: 220px; }
+.locations-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.location-block h4 { font-size: 0.85rem; color: var(--color-blue-deep); margin-bottom: 0.6rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.location-block .contact-map { min-height: 180px; }
+.contact-map-embed { border-radius: var(--radius-md); overflow: hidden; margin-bottom: 0.6rem; }
+.contact-map-embed iframe { display: block; }
+@media (max-width: 700px) { .locations-grid { grid-template-columns: 1fr; } }
 .contact-details { display: flex; flex-direction: column; gap: 0.9rem; }
 .contact-details li { display: flex; align-items: center; gap: 0.75rem; font-size: 0.95rem; }
 .contact-details a:hover { color: var(--color-blue-deep); }
