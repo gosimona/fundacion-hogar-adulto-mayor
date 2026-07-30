@@ -273,7 +273,7 @@ section.section { padding: var(--space-xxl) 0; }
   overflow: hidden;
   color: var(--color-white);
 }
-.hero-bg { position: absolute; inset: 0; border-radius: 0; border: none; }
+.hero-bg { position: absolute; inset: 0; border-radius: 0; border: none; background-size: cover; background-position: center 25%; }
 .hero-bg::before, .hero-bg::after { display: none; }
 .hero-overlay {
   position: absolute; inset: 0;
@@ -487,6 +487,11 @@ section.section { padding: var(--space-xxl) 0; }
   .shot-image { width: 190px; height: 340px; }
 }
 
+.fb-post-block { max-width: 540px; margin: var(--space-lg) auto 0; text-align: center; }
+.fb-post-block h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+.fb-post-block > p { color: var(--color-text-soft); margin-bottom: 1.25rem; }
+.fb-post-block .fb-post { display: flex; justify-content: center; }
+
 /* ---------- Servicios ---------- */
 .section-services { background: var(--color-sand); }
 .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: var(--space-xl); }
@@ -522,7 +527,7 @@ section.section { padding: var(--space-xxl) 0; }
   display: flex;
   flex-direction: column;
 }
-.project-image { min-height: 190px; border-radius: 0; border: none; }
+.project-image { min-height: 190px; height: 190px; width: 100%; border-radius: 0; border: none; object-fit: cover; display: block; }
 .project-body { padding: var(--space-md); flex: 1; display: flex; flex-direction: column; }
 .badge {
   display: inline-block;

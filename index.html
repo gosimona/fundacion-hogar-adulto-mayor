@@ -52,7 +52,7 @@
 
   <!-- ===================== 1. INICIO / HERO ===================== -->
   <section id="inicio" class="hero">
-    <div class="hero-bg img-placeholder" data-desc="Foto grande y cálida: un adulto mayor sonriendo de forma genuina junto a un cuidador o familiar, en un espacio luminoso del hogar con luz natural entrando por una ventana. Evitar fotos de stock frías." aria-hidden="true"></div>
+    <div class="hero-bg" style="background-image:url('assets/images/hero-bg.jpg');" aria-hidden="true"></div>
     <div class="hero-overlay" aria-hidden="true"></div>
 
     <div class="container hero-content">
@@ -154,12 +154,12 @@
             <p class="team-role">Fundadora y Representante Legal</p>
           </div>
           <div class="team-card reveal">
-            <div class="team-photo img-placeholder" data-desc="Foto de retrato cálido del director técnico del hogar."></div>
+            <img class="team-photo" src="assets/images/equipo-director-tecnico.jpg" alt="Director técnico de FHAMN">
             <h4>Dirección Técnica</h4>
             <p class="team-role">Director técnico</p>
           </div>
           <div class="team-card reveal">
-            <div class="team-photo img-placeholder" data-desc="Foto de una de las enfermeras profesionales del equipo, idealmente interactuando con un residente."></div>
+            <img class="team-photo" src="assets/images/equipo-enfermeria.jpg" alt="Enfermera del equipo de FHAMN tomando signos vitales a una residente">
             <h4>Equipo de Enfermería</h4>
             <p class="team-role">2 enfermeras profesionales y 6 auxiliares de enfermería</p>
           </div>
@@ -294,6 +294,16 @@
         </div>
       </div>
     </div>
+
+    <div class="container">
+      <div class="fb-post-block reveal">
+        <h3>Una publicación reciente</h3>
+        <p>El Club de Leones Bucaramanga Diamante visitó el hogar y compartió su experiencia en Facebook.</p>
+        <div id="fb-root"></div>
+        <div class="fb-post" data-href="https://www.facebook.com/share/195rZzPo8Q/" data-width="500"></div>
+      </div>
+    </div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v19.0"></script>
   </section>
 
   <!-- ===================== 3. SERVICIOS ===================== -->
@@ -386,7 +396,7 @@
 
       <div class="projects-grid projects-grid--two">
         <article class="project-card reveal">
-          <div class="project-image img-placeholder" data-desc="Foto que muestre las dos sedes actuales: el terreno donado o la sede en arriendo, con residentes en un espacio común."></div>
+          <img class="project-image" src="assets/images/proyecto-sedes-actuales.jpg" alt="Residentes de FHAMN compartiendo en el espacio exterior de una de las sedes actuales">
           <div class="project-body">
             <span class="badge badge-progress">En gestión</span>
             <h3>Unificar nuestras dos sedes en una sola</h3>
