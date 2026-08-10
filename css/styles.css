@@ -361,7 +361,7 @@ section.section { padding: var(--space-xxl) 0; }
 .section-about { background: var(--color-white); }
 .about-story { display: grid; grid-template-columns: 1.1fr 1fr; gap: var(--space-lg); align-items: center; margin-bottom: var(--space-xl); }
 .about-story-text p { margin-bottom: 1rem; color: var(--color-text-soft); }
-.about-story-image { min-height: 340px; }
+.about-story-image { min-height: 340px; height: 340px; width: 100%; object-fit: cover; display: block; border-radius: var(--radius-md); }
 @media (max-width: 860px) {
   .about-story { grid-template-columns: 1fr; }
 }
