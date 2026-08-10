@@ -517,11 +517,13 @@ section.section { padding: var(--space-xxl) 0; }
   justify-content: center;
   width: 56px;
   height: 56px;
-  font-size: 1.6rem;
   margin-bottom: 1.1rem;
   border-radius: 16px;
   background: linear-gradient(135deg, var(--color-blue-whisper), var(--color-green-whisper));
+  color: var(--color-blue-deep);
 }
+.service-icon svg { width: 26px; height: 26px; }
+.service-card:hover .service-icon { color: var(--color-blue); }
 .service-card h3 { font-size: 1.12rem; margin-bottom: 0.5rem; letter-spacing: -0.01em; }
 .service-card p { color: var(--color-text-soft); font-size: 0.95rem; }
 @media (max-width: 860px) { .services-grid { grid-template-columns: 1fr; } }
