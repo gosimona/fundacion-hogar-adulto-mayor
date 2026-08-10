@@ -106,8 +106,35 @@
     progressFills.forEach(function (fill) { fill.style.width = fill.getAttribute('data-progress') + '%'; });
   }
 
-  /* ---------- Toggle donación única / mensual ---------- */
+  /* ---------- Donación: monto + frecuencia -> botón de WhatsApp ---------- */
   var toggleBtns = document.querySelectorAll('.toggle-btn');
+  var amountBtns = document.querySelectorAll('.amount-btn');
+  var donateBtn = document.getElementById('donate-whatsapp-btn');
+  var donatePhone = '573164291516';
+
+  function currentAmountText() {
+    var active = document.querySelector('.amount-btn.is-active');
+    if (!active || active.classList.contains('amount-btn--custom')) return null;
+    return active.textContent.trim();
+  }
+
+  function isRecurrente() {
+    var active = document.querySelector('.toggle-btn.is-active');
+    return !!active && active.getAttribute('data-donation-type') === 'recurrente';
+  }
+
+  function updateDonateLink() {
+    if (!donateBtn) return;
+    var amount = currentAmountText();
+    var recurrente = isRecurrente();
+    var message = 'Hola, quiero hacer una donación' +
+      (recurrente ? ' mensual' : '') +
+      (amount ? ' de ' + amount : '') +
+      ' a FHAMN';
+    donateBtn.href = 'https://wa.me/' + donatePhone + '?text=' + encodeURIComponent(message);
+    donateBtn.textContent = '💬 Donar' + (amount ? ' ' + amount : '') + (recurrente ? ' al mes' : '') + ' por WhatsApp';
+  }
+
   toggleBtns.forEach(function (btn) {
     btn.addEventListener('click', function () {
       toggleBtns.forEach(function (b) {
@@ -116,17 +143,19 @@
       });
       btn.classList.add('is-active');
       btn.setAttribute('aria-selected', 'true');
+      updateDonateLink();
     });
   });
 
-  /* ---------- Selección de monto de donación ---------- */
-  var amountBtns = document.querySelectorAll('.amount-btn');
   amountBtns.forEach(function (btn) {
     btn.addEventListener('click', function () {
       amountBtns.forEach(function (b) { b.classList.remove('is-active'); });
       btn.classList.add('is-active');
+      updateDonateLink();
     });
   });
+
+  updateDonateLink();
 
   /* ---------- Formulario de contacto (demo, sin backend) ---------- */
   var contactForm = document.getElementById('contact-form');
