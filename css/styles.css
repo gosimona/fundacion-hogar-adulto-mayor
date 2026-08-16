@@ -335,11 +335,53 @@ section.section { padding: var(--space-xxl) 0; }
 }
 
 /* ---------- Partners ---------- */
-.rifa-promo-banner { background: var(--color-blue-deep); padding: 1.1rem 0; }
-.rifa-promo-inner { display: flex; align-items: center; justify-content: center; gap: 1.25rem; flex-wrap: wrap; text-align: center; }
-.rifa-promo-text { color: var(--color-white); font-size: 0.95rem; margin: 0; }
-.rifa-promo-banner .btn-primary { background: var(--color-white); color: var(--color-blue-deep); flex-shrink: 0; }
-.rifa-promo-banner .btn-primary:hover { background: var(--color-sand); }
+.hero-rifa-banner {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  background: rgba(255, 253, 249, 0.96);
+  border-radius: var(--radius-lg);
+  padding: 1rem 1.25rem;
+  max-width: 620px;
+  box-shadow: var(--shadow-soft);
+}
+.hero-rifa-photo {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 3px solid var(--color-white);
+  box-shadow: var(--shadow-card);
+}
+.hero-rifa-text { flex: 1; min-width: 160px; }
+.hero-rifa-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-green-accent);
+  margin-bottom: 0.15rem;
+}
+.hero-rifa-title { font-size: 0.95rem; font-weight: 600; color: var(--color-blue-deep); margin: 0; }
+.btn-rifa-big {
+  background: var(--color-blue-deep);
+  color: var(--color-white);
+  font-size: 1.05rem;
+  font-weight: 600;
+  padding: 1.1rem 1.75rem;
+  min-height: 56px;
+  box-shadow: var(--shadow-soft);
+  flex-shrink: 0;
+}
+.btn-rifa-big:hover { background: var(--color-blue); transform: translateY(-2px); }
+
+@media (max-width: 700px) {
+  .hero-rifa-banner { flex-direction: column; text-align: center; padding: 1.25rem; }
+  .btn-rifa-big { width: 100%; }
+}
 
 .partners { padding: var(--space-lg) 0; background: var(--color-sand); }
 .partners-label { text-align: center; font-size: 0.85rem; color: var(--color-text-soft); margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.08em; }
