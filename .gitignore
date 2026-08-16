@@ -4,3 +4,7 @@ node_modules/
 Thumbs.db
 
 .vercel
+.env*
+.agents/
+.claude/
+skills-lock.json

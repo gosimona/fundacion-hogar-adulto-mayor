@@ -1,0 +1,10 @@
+{
+  "name": "fundacion-hogar-adulto-mayor",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Sitio institucional de la Fundacion Hogar Adulto Mayor Necesitado, con funciones serverless para la Rifa del Novillo.",
+  "dependencies": {
+    "pg": "^8.11.3",
+    "dotenv": "^16.4.5"
+  }
+}

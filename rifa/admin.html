@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Admin Rifa | FHAMN</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="rifa.css">
+<style>
+  body { background: var(--color-sand); }
+  .admin-wrap { max-width: 1000px; margin: 0 auto; padding: var(--space-xl) 1.5rem; }
+  .admin-gate {
+    max-width: 360px;
+    margin: 4rem auto;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-card);
+    text-align: center;
+  }
+  .admin-gate h1 { font-size: 1.3rem; margin-bottom: 1rem; }
+  .admin-gate .form-row { text-align: left; margin-bottom: 1rem; }
+  .admin-table-wrap { overflow-x: auto; background: var(--color-white); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); }
+  table.admin-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  table.admin-table th, table.admin-table td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid var(--color-sand-deep); white-space: nowrap; }
+  table.admin-table th { background: var(--color-blue-whisper); color: var(--color-blue-deep); font-weight: 600; }
+  table.admin-table td.wrap { white-space: normal; }
+  .admin-actions { display: flex; gap: 0.5rem; }
+  .admin-actions button { min-height: 36px; padding: 0.4rem 0.8rem; font-size: 0.8rem; border-radius: 999px; border: 1.5px solid var(--color-sand-deep); background: var(--color-white); }
+  .admin-actions button.confirmar { border-color: var(--color-green-accent); color: var(--color-green-accent); }
+  .admin-actions button.liberar { border-color: #b34a4a; color: #b34a4a; }
+  .admin-empty { padding: 2rem; text-align: center; color: var(--color-text-soft); }
+  .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 1rem; }
+</style>
+</head>
+<body>
+
+<div class="admin-wrap">
+  <div id="admin-gate" class="admin-gate">
+    <h1>Panel de administración — Rifa</h1>
+    <div class="form-row">
+      <label for="admin-pin">PIN de administrador</label>
+      <input type="password" id="admin-pin" autocomplete="off">
+    </div>
+    <button type="button" class="btn btn-primary btn-block" id="admin-login-btn">Entrar</button>
+    <p class="form-note" id="admin-gate-note" role="status" aria-live="polite"></p>
+  </div>
+
+  <div id="admin-panel" hidden>
+    <div class="admin-header">
+      <h1>Reservas y ventas de la rifa</h1>
+      <button type="button" class="btn btn-secondary" id="admin-refresh-btn">Actualizar</button>
+    </div>
+    <div class="admin-table-wrap">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Número</th>
+            <th>Estado</th>
+            <th>Comprador</th>
+            <th>Teléfono</th>
+            <th>Muro</th>
+            <th>Fecha</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="admin-table-body"></tbody>
+      </table>
+      <p class="admin-empty" id="admin-empty" hidden>No hay reservas ni ventas todavía.</p>
+    </div>
+  </div>
+</div>
+
+<script src="admin.js"></script>
+</body>
+</html>

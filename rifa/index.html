@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rifa del Novillo | Fundación Hogar Adulto Mayor Necesitado</title>
+<meta name="description" content="Participa en la Rifa del Novillo de FHAMN. Reserva tu número y ayúdanos a dotar la lavandería con lavadoras industriales.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="rifa.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+
+<!-- ===================== HEADER ===================== -->
+<header class="site-header is-scrolled" id="site-header">
+  <div class="header-inner container">
+    <a href="../index.html" class="logo" aria-label="Fundación Hogar Adulto Mayor Necesitado, ir al inicio">
+      <img src="../assets/images/logo-icon.png" alt="" class="logo-mark" width="275" height="575">
+      <span class="logo-text">
+        <strong>Fundación Hogar</strong>
+        <span>Adulto Mayor Necesitado</span>
+      </span>
+    </a>
+
+    <nav class="main-nav" id="main-nav" aria-label="Navegación principal">
+      <ul>
+        <li><a href="../index.html" class="nav-link">Volver al sitio principal</a></li>
+        <li><a href="#numeros" class="nav-link">Números</a></li>
+        <li><a href="#muro" class="nav-link">Muro de benefactores</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <a href="#numeros" class="btn btn-primary btn-donate">Ver números</a>
+      <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú de navegación">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main-content">
+
+  <!-- ===================== HERO ===================== -->
+  <section class="rifa-hero">
+    <div class="container rifa-hero-content">
+      <p class="eyebrow reveal">Rifa solidaria</p>
+      <h1 class="reveal">🐂 Rifa del Novillo</h1>
+      <p class="rifa-hero-subtitle reveal">Un novillo donado a la fundación es el premio de esta rifa. Cada número que compras nos acerca a dotar nuestra lavandería con lavadoras industriales, para cuidar mejor la ropa de nuestros 100 adultos mayores.</p>
+      <div class="hero-ctas reveal">
+        <a href="#numeros" class="btn btn-primary">Elegir mi número — $25.000</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== RESUMEN / CONTADOR ===================== -->
+  <section class="section rifa-summary-section">
+    <div class="container">
+      <div class="rifa-summary reveal">
+        <div class="rifa-summary-stats">
+          <div class="rifa-stat">
+            <span class="rifa-stat-number" id="stat-sold">0</span>
+            <p>de 1000 números vendidos</p>
+          </div>
+          <div class="rifa-stat">
+            <span class="rifa-stat-number" id="stat-amount">$0</span>
+            <p>recaudados para la lavandería</p>
+          </div>
+        </div>
+        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="1000" id="rifa-progress-bar">
+          <div class="progress-fill" id="rifa-progress-fill" style="width:0%"></div>
+        </div>
+      </div>
+
+      <div class="rifa-purpose reveal">
+        <span class="badge badge-progress">¿Para qué es?</span>
+        <h3>Lavadoras industriales para nuestra lavandería</h3>
+        <p>Hoy lavamos a mano y con equipos pequeños la ropa de 100 adultos mayores, muchos de ellos con necesidades especiales de higiene. Con lo recaudado en esta rifa queremos dotar la lavandería con lavadoras industriales, para lavar más rápido, con mejor higiene, y aliviar la carga de nuestro equipo de cuidadores.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== GRILLA DE NÚMEROS ===================== -->
+  <section id="numeros" class="section rifa-numbers-section">
+    <div class="container">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Elige tu número</p>
+        <h2>000 al 999 — $25.000 cada uno</h2>
+        <p class="section-lead">Toca un número disponible para reservarlo. Tienes 45 minutos para completar el pago antes de que vuelva a quedar libre.</p>
+      </div>
+
+      <div class="rifa-legend">
+        <span><i class="rifa-swatch is-available"></i> Disponible</span>
+        <span><i class="rifa-swatch is-reserved"></i> Reservado</span>
+        <span><i class="rifa-swatch is-sold"></i> Vendido</span>
+      </div>
+
+      <div class="rifa-grid" id="rifa-grid" aria-label="Números de la rifa"></div>
+    </div>
+  </section>
+
+  <!-- ===================== MURO DE BENEFACTORES ===================== -->
+  <section id="muro" class="section rifa-wall-section">
+    <div class="container">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Gracias</p>
+        <h2>Muro de benefactores</h2>
+        <p class="section-lead">Estas son las personas y negocios que ya se sumaron a la rifa.</p>
+      </div>
+      <div class="rifa-wall" id="rifa-wall">
+        <p class="rifa-wall-empty" id="rifa-wall-empty">Sé el primero en aparecer aquí — ¡reserva tu número!</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===================== MODAL DE RESERVA ===================== -->
+<div class="rifa-modal-backdrop" id="rifa-modal-backdrop" hidden>
+  <div class="rifa-modal" role="dialog" aria-modal="true" aria-labelledby="rifa-modal-title">
+    <button type="button" class="rifa-modal-close" id="rifa-modal-close" aria-label="Cerrar">✕</button>
+
+    <div id="rifa-modal-step-form">
+      <h3 id="rifa-modal-title">Reservar el número <span id="rifa-modal-number">000</span></h3>
+      <p class="rifa-modal-price">$25.000 COP</p>
+      <form id="rifa-reserve-form">
+        <div class="form-row">
+          <label for="rifa-buyer-name">Nombre completo</label>
+          <input type="text" id="rifa-buyer-name" name="buyerName" required minlength="2" maxlength="80">
+        </div>
+        <div class="form-row">
+          <label for="rifa-buyer-phone">WhatsApp / Teléfono</label>
+          <input type="tel" id="rifa-buyer-phone" name="buyerPhone" required placeholder="300 000 0000">
+        </div>
+        <div class="form-row form-row--checkbox">
+          <label>
+            <input type="checkbox" id="rifa-show-wall" name="showOnWall">
+            Quiero aparecer en el muro de benefactores
+          </label>
+        </div>
+        <div class="form-row" id="rifa-wall-name-row" hidden>
+          <label for="rifa-wall-name">¿Cómo quieres aparecer? (tu nombre o el de tu empresa)</label>
+          <input type="text" id="rifa-wall-name" name="wallDisplayName" maxlength="80">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Reservar este número</button>
+        <p class="form-note" id="rifa-form-note" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+
+    <div id="rifa-modal-step-payment" hidden>
+      <h3>¡Reservado! Número <span id="rifa-modal-number-2">000</span></h3>
+      <p class="rifa-modal-hold-note">Tienes <strong>45 minutos</strong> para completar el pago antes de que el número vuelva a quedar disponible.</p>
+
+      <div class="rifa-payment-methods">
+        <div class="rifa-payment-method">
+          <span class="badge badge-progress">Próximamente</span>
+          <h4>Nequi</h4>
+          <p>Estamos confirmando el número. Mientras tanto, paga por transferencia bancaria abajo.</p>
+        </div>
+        <div class="rifa-payment-method">
+          <span class="badge badge-complete">Disponible</span>
+          <h4>Davivienda — Cuenta de ahorros</h4>
+          <p><strong>Número de cuenta:</strong> 047200079508<br>
+          <strong>Titular:</strong> Fundación Adulto Mayor Necesitado</p>
+        </div>
+      </div>
+
+      <a href="#" id="rifa-whatsapp-btn" target="_blank" rel="noopener" class="btn btn-primary btn-block">💬 Enviar comprobante por WhatsApp</a>
+      <button type="button" class="btn btn-secondary btn-block" id="rifa-modal-done">Listo, cerrar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a href="../index.html" class="logo logo--footer" aria-label="Fundación Hogar Adulto Mayor Necesitado, ir al inicio">
+        <img src="../assets/images/logo-full.png" alt="Fundación Hogar Adulto Mayor Necesitado — FHAMN — Amar, servir y compartir" class="footer-logo-img" width="924" height="593">
+      </a>
+      <p>Cuidado, dignidad y calidez para adultos mayores, desde 2007.</p>
+    </div>
+
+    <div class="footer-links">
+      <h4>Navegación</h4>
+      <ul>
+        <li><a href="../index.html">Sitio principal</a></li>
+        <li><a href="#numeros">Números de la rifa</a></li>
+        <li><a href="#muro">Muro de benefactores</a></li>
+        <li><a href="../index.html#contacto">Contacto</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-legal">
+      <h4>Información legal</h4>
+      <p>Fundación sin ánimo de lucro<br>Legalmente constituida el 1 de mayo de 2007<br>NIT 900.188.356-9</p>
+    </div>
+
+    <div class="footer-social">
+      <h4>Síguenos</h4>
+      <div class="social-links">
+        <a href="https://www.facebook.com/profile.php?id=61593132808641" target="_blank" rel="noopener" aria-label="Facebook de la fundación">Facebook</a>
+        <a href="https://www.tiktok.com/@fundacionfhamn" target="_blank" rel="noopener" aria-label="TikTok de la fundación">TikTok</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom container">
+    <p>&copy; 2026 Fundación Hogar Adulto Mayor Necesitado. Todos los derechos reservados.</p>
+    <div class="footer-bottom-links">
+      <a href="../index.html">Política de privacidad</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script src="rifa.js"></script>
+</body>
+</html>
