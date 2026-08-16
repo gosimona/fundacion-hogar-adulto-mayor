@@ -12,7 +12,11 @@
   var tbody = document.getElementById('admin-table-body');
   var emptyMsg = document.getElementById('admin-empty');
 
+  var PRICE_PER_NUMBER = 25000;
+
   function pad3(n) { return String(n).padStart(3, '0'); }
+
+  function formatCOP(n) { return '$' + Number(n).toLocaleString('es-CO'); }
 
   function formatDate(iso) {
     if (!iso) return '—';
@@ -66,8 +70,15 @@
       tr.appendChild(tdNumber);
 
       var tdStatus = document.createElement('td');
-      tdStatus.textContent = item.status === 'sold' ? 'Vendido' : 'Reservado';
+      var statusLabels = { sold: 'Vendido', apartado: 'Apartado (abono)', reserved: 'Reservado' };
+      tdStatus.textContent = statusLabels[item.status] || item.status;
       tr.appendChild(tdStatus);
+
+      var tdPaid = document.createElement('td');
+      tdPaid.textContent = item.status === 'sold'
+        ? formatCOP(PRICE_PER_NUMBER)
+        : formatCOP(item.amountPaid) + ' / ' + formatCOP(PRICE_PER_NUMBER);
+      tr.appendChild(tdPaid);
 
       var tdBuyer = document.createElement('td');
       tdBuyer.className = 'wrap';
@@ -98,6 +109,13 @@
         confirmBtn.textContent = 'Marcar pagado';
         confirmBtn.addEventListener('click', function () { confirmarPago(item.number); });
         actionsWrap.appendChild(confirmBtn);
+
+        var abonoBtn = document.createElement('button');
+        abonoBtn.type = 'button';
+        abonoBtn.className = 'abonar';
+        abonoBtn.textContent = 'Registrar abono';
+        abonoBtn.addEventListener('click', function () { registrarAbono(item.number, item.remaining); });
+        actionsWrap.appendChild(abonoBtn);
       }
 
       var releaseBtn = document.createElement('button');
@@ -140,6 +158,25 @@
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ number: number }),
+    })
+      .then(function (res) {
+        if (res.status === 401) { clearPin(); showGate('Sesión expirada.'); return; }
+        loadReservas();
+      });
+  }
+
+  function registrarAbono(number, remaining) {
+    var input = prompt('¿Cuánto abonó para el número ' + pad3(number) + '? (queda ' + formatCOP(remaining) + ' por completar)');
+    if (input === null) return;
+    var amount = Number.parseInt(input.replace(/[^0-9]/g, ''), 10);
+    if (!Number.isInteger(amount) || amount <= 0) {
+      alert('Ingresa un monto válido en pesos, por ejemplo 10000.');
+      return;
+    }
+    adminFetch('/api/admin/registrar-pago', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ number: number, amount: amount }),
     })
       .then(function (res) {
         if (res.status === 401) { clearPin(); showGate('Sesión expirada.'); return; }

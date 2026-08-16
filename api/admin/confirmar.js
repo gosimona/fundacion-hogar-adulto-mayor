@@ -1,6 +1,8 @@
 const { getPool } = require('../../lib/db');
 const { isAuthorized } = require('../../lib/adminAuth');
 
+const PRICE_PER_NUMBER = 25000;
+
 function parseBody(req) {
   if (req.body && typeof req.body === 'object') return req.body;
   if (typeof req.body === 'string' && req.body.length) {
@@ -30,7 +32,7 @@ module.exports = async (req, res) => {
     const pool = getPool();
     const { rows } = await pool.query(
       `UPDATE rifa_numeros
-       SET status = 'sold', sold_at = now()
+       SET status = 'sold', sold_at = now(), amount_paid = ${PRICE_PER_NUMBER}
        WHERE number = $1
        RETURNING number, status, buyer_name, buyer_phone, wall_display_name, show_on_wall, sold_at`,
       [number]

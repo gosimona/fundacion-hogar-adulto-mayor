@@ -33,7 +33,7 @@ module.exports = async (req, res) => {
        SET status = 'available',
            buyer_name = NULL, buyer_phone = NULL,
            wall_display_name = NULL, show_on_wall = false,
-           reserved_at = NULL, sold_at = NULL
+           reserved_at = NULL, sold_at = NULL, amount_paid = 0
        WHERE number = $1
        RETURNING number, status`,
       [number]

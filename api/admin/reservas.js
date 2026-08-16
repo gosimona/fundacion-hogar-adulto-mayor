@@ -2,6 +2,8 @@ const { getPool } = require('../../lib/db');
 const { isAuthorized } = require('../../lib/adminAuth');
 
 const HOLD_MINUTES = 45;
+const ABONO_DEADLINE = '2026-10-11 23:59:59-05';
+const PRICE_PER_NUMBER = 25000;
 
 module.exports = async (req, res) => {
   if (req.method !== 'GET') {
@@ -16,11 +18,18 @@ module.exports = async (req, res) => {
   try {
     const pool = getPool();
     const { rows } = await pool.query(`
-      SELECT number,
+      SELECT number, amount_paid,
         CASE
-          WHEN status = 'reserved' AND reserved_at < now() - interval '${HOLD_MINUTES} minutes'
+          WHEN status = 'sold' THEN 'sold'
+          WHEN status = 'reserved' AND amount_paid = 0 AND reserved_at < now() - interval '${HOLD_MINUTES} minutes'
             THEN 'available'
-          ELSE status
+          WHEN status = 'reserved' AND amount_paid > 0 AND now() > '${ABONO_DEADLINE}'::timestamptz
+            THEN 'available'
+          WHEN status = 'reserved' AND amount_paid > 0
+            THEN 'apartado'
+          WHEN status = 'reserved'
+            THEN 'reserved'
+          ELSE 'available'
         END AS effective_status,
         buyer_name, buyer_phone, wall_display_name, show_on_wall,
         reserved_at, sold_at
@@ -34,6 +43,8 @@ module.exports = async (req, res) => {
       .map((r) => ({
         number: r.number,
         status: r.effective_status,
+        amountPaid: r.amount_paid,
+        remaining: PRICE_PER_NUMBER - r.amount_paid,
         buyerName: r.buyer_name,
         buyerPhone: r.buyer_phone,
         wallDisplayName: r.wall_display_name,

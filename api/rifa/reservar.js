@@ -1,6 +1,7 @@
 const { getPool } = require('../../lib/db');
 
 const HOLD_MINUTES = 45;
+const ABONO_DEADLINE = '2026-10-11 23:59:59-05';
 
 function parseBody(req) {
   if (req.body && typeof req.body === 'object') return req.body;
@@ -50,11 +51,14 @@ module.exports = async (req, res) => {
            buyer_phone = $3,
            wall_display_name = $4,
            show_on_wall = $5,
-           reserved_at = now()
+           reserved_at = now(),
+           amount_paid = 0,
+           sold_at = NULL
        WHERE number = $1
          AND (
            status = 'available'
-           OR (status = 'reserved' AND reserved_at < now() - interval '${HOLD_MINUTES} minutes')
+           OR (status = 'reserved' AND amount_paid = 0 AND reserved_at < now() - interval '${HOLD_MINUTES} minutes')
+           OR (status = 'reserved' AND amount_paid > 0 AND now() > '${ABONO_DEADLINE}'::timestamptz)
          )
        RETURNING number, status, reserved_at`,
       [number, buyerName, buyerPhone, wallDisplayName, showOnWall]
