@@ -335,37 +335,33 @@ section.section { padding: var(--space-xxl) 0; }
 }
 
 /* ---------- Partners ---------- */
-.hero-rifa-banner {
+.rifa-subhero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  background: var(--color-sand);
+  overflow: hidden;
+}
+.rifa-subhero-media { position: relative; min-height: 420px; }
+.rifa-subhero-photo { width: 100%; height: 100%; object-fit: cover; display: block; }
+.rifa-subhero-content {
   display: flex;
-  align-items: center;
-  gap: 1.25rem;
-  flex-wrap: wrap;
-  margin-top: 2rem;
-  background: rgba(255, 253, 249, 0.96);
-  border-radius: var(--radius-lg);
-  padding: 1rem 1.25rem;
-  max-width: 620px;
-  box-shadow: var(--shadow-soft);
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-xl) var(--space-lg);
 }
-.hero-rifa-photo {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  object-fit: cover;
-  flex-shrink: 0;
-  border: 3px solid var(--color-white);
-  box-shadow: var(--shadow-card);
-}
-.hero-rifa-text { flex: 1; min-width: 160px; }
-.hero-rifa-label {
-  font-size: 0.72rem;
-  font-weight: 600;
+.rifa-subhero-eyebrow {
+  font-size: 0.82rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
+  font-weight: 600;
   color: var(--color-green-accent);
-  margin-bottom: 0.15rem;
+  margin-bottom: 0.75rem;
 }
-.hero-rifa-title { font-size: 0.95rem; font-weight: 600; color: var(--color-blue-deep); margin: 0; }
+.rifa-subhero-title { font-size: clamp(1.7rem, 3vw, 2.3rem); margin-bottom: 1rem; }
+.rifa-subhero-text { color: var(--color-text-soft); font-size: 1.05rem; margin-bottom: 1.75rem; max-width: 480px; }
+.rifa-subhero-note { margin-top: 1rem; font-size: 0.85rem; color: var(--color-text-soft); }
+
 .btn-rifa-big {
   background: var(--color-blue-deep);
   color: var(--color-white);
@@ -374,12 +370,15 @@ section.section { padding: var(--space-xxl) 0; }
   padding: 1.1rem 1.75rem;
   min-height: 56px;
   box-shadow: var(--shadow-soft);
-  flex-shrink: 0;
+  width: fit-content;
 }
 .btn-rifa-big:hover { background: var(--color-blue); transform: translateY(-2px); }
 
-@media (max-width: 700px) {
-  .hero-rifa-banner { flex-direction: column; text-align: center; padding: 1.25rem; }
+@media (max-width: 860px) {
+  .rifa-subhero { grid-template-columns: 1fr; }
+  .rifa-subhero-media { min-height: 280px; order: -1; }
+  .rifa-subhero-content { padding: var(--space-lg) 1.5rem; text-align: center; align-items: center; }
+  .rifa-subhero-text { max-width: 100%; }
   .btn-rifa-big { width: 100%; }
 }
 
