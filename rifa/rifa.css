@@ -13,19 +13,18 @@
   position: absolute;
   inset: 0;
   background-size: cover;
-  background-position: center 30%;
-  transform: scale(1.06);
+  background-position: center 35%;
 }
 .rifa-hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(18, 28, 36, 0.55) 0%, rgba(18, 28, 36, 0.78) 65%, rgba(18, 28, 36, 0.9) 100%);
+  background: linear-gradient(180deg, rgba(18, 28, 36, 0.4) 0%, rgba(18, 28, 36, 0.65) 65%, rgba(18, 28, 36, 0.85) 100%);
 }
 .rifa-hero-content { position: relative; z-index: 2; max-width: 640px; padding: var(--space-lg) 0 var(--space-xl); }
 .rifa-hero h1 { color: var(--color-white); font-size: clamp(2.3rem, 4.6vw, 3.4rem); margin-bottom: 1.1rem; text-shadow: 0 4px 24px rgba(0,0,0,0.35); }
 .rifa-hero-subtitle { font-size: 1.1rem; color: rgba(255, 253, 249, 0.94); margin-bottom: 2rem; max-width: 560px; }
 
-.rifa-summary-section { padding-top: var(--space-xl); padding-bottom: var(--space-md); background: linear-gradient(180deg, var(--color-sand) 0%, var(--color-blue-whisper) 100%); }
+.rifa-summary-section { padding-top: var(--space-lg); padding-bottom: var(--space-sm); background: linear-gradient(180deg, var(--color-sand) 0%, var(--color-blue-whisper) 100%); }
 .rifa-summary {
   background: var(--color-white);
   border-radius: var(--radius-lg);
@@ -49,7 +48,7 @@
 .rifa-purpose h3 { margin: 0.6rem 0 0.75rem; font-size: 1.3rem; }
 .rifa-purpose p { color: var(--color-text-soft); }
 
-.rifa-numbers-section { background: linear-gradient(180deg, var(--color-blue-whisper) 0%, var(--color-white) 18%); }
+.rifa-numbers-section { padding-top: var(--space-lg); padding-bottom: var(--space-lg); background: linear-gradient(180deg, var(--color-blue-whisper) 0%, var(--color-white) 18%); }
 
 .rifa-draw-info {
   display: flex;
@@ -107,25 +106,45 @@
 .rifa-cell.is-sold { background: var(--color-green-accent); border-color: var(--color-green-accent); color: var(--color-white); cursor: not-allowed; }
 .rifa-cell:disabled { opacity: 0.9; }
 
-.rifa-wall-section { background: linear-gradient(180deg, var(--color-white) 0%, var(--color-sand) 100%); }
+.rifa-wall-section {
+  position: relative;
+  padding-top: var(--space-lg);
+  padding-bottom: var(--space-lg);
+  background: radial-gradient(120% 140% at 50% -10%, #2a4a5c 0%, var(--color-blue-deep) 45%, #1a3341 100%);
+  overflow: hidden;
+}
+.rifa-wall-section .section-heading .eyebrow { color: #f0c96b; }
+.rifa-wall-section .section-heading h2 { color: var(--color-white); }
+.rifa-wall-section .section-heading .section-lead { color: rgba(255, 253, 249, 0.78); }
+
 .rifa-wall {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.75rem;
-  max-width: 860px;
+  gap: 1rem;
+  max-width: 900px;
   margin: 0 auto;
 }
 .rifa-wall-item {
-  background: var(--color-white);
-  border-radius: 999px;
-  padding: 0.6rem 1.25rem;
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--color-blue-deep);
-  box-shadow: var(--shadow-card);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, rgba(255, 253, 249, 0.14), rgba(255, 253, 249, 0.05));
+  border: 1px solid rgba(240, 201, 107, 0.45);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1.5rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #f6e2c1;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+  transition: transform 0.25s ease, border-color 0.25s ease;
 }
-.rifa-wall-empty { color: var(--color-text-soft); text-align: center; width: 100%; }
+.rifa-wall-item::before { content: "🐂"; font-size: 1rem; font-style: normal; opacity: 0.9; }
+.rifa-wall-item:hover { transform: translateY(-3px); border-color: #f0c96b; }
+.rifa-wall-empty { color: rgba(255, 253, 249, 0.75); text-align: center; width: 100%; font-size: 1.05rem; }
 
 /* ---------- Modal ---------- */
 .rifa-modal-backdrop {
@@ -179,4 +198,10 @@
   .rifa-grid { grid-template-columns: repeat(auto-fill, minmax(38px, 1fr)); gap: 0.3rem; }
   .rifa-cell { min-height: 38px; font-size: 0.72rem; }
   .rifa-summary-stats { gap: var(--space-lg); }
+}
+
+@media (max-width: 700px) {
+  .rifa-hero { min-height: 78vh; }
+  .rifa-hero-bg { background-position: center 38%; }
+  .rifa-hero-overlay { background: linear-gradient(180deg, rgba(18, 28, 36, 0.3) 0%, rgba(18, 28, 36, 0.6) 60%, rgba(18, 28, 36, 0.88) 100%); }
 }
