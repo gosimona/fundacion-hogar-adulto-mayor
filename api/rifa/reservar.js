@@ -1,7 +1,7 @@
 const { getPool } = require('../../lib/db');
 
 const HOLD_MINUTES = 45;
-const ABONO_DEADLINE = '2026-10-11 23:59:59-05';
+const ABONO_DEADLINE = '2026-11-01 23:59:59-05';
 
 function parseBody(req) {
   if (req.body && typeof req.body === 'object') return req.body;

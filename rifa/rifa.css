@@ -1,28 +1,31 @@
 /* ================= Rifa del Novillo ================= */
 
 .rifa-hero {
-  background: linear-gradient(135deg, var(--color-blue-deep), var(--color-blue));
-  padding: calc(var(--header-height) + var(--space-lg)) 0 var(--space-xl);
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  padding-top: var(--header-height);
+  overflow: hidden;
   color: var(--color-white);
-  text-align: center;
 }
-.rifa-hero-content { max-width: 680px; margin: 0 auto; }
-.rifa-hero-photo {
-  width: 160px;
-  height: 160px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 4px solid rgba(255, 253, 249, 0.85);
-  box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.4);
-  margin: 0 auto 1.5rem;
-  display: block;
+.rifa-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center 30%;
+  transform: scale(1.06);
 }
-.rifa-hero h1 { color: var(--color-white); font-size: clamp(2.1rem, 4.4vw, 3rem); margin-bottom: 1rem; }
-.rifa-hero-subtitle { font-size: 1.05rem; color: rgba(255, 253, 249, 0.92); margin-bottom: 2rem; }
-.rifa-hero .btn-primary { background: var(--color-white); color: var(--color-blue-deep); }
-.rifa-hero .btn-primary:hover { background: var(--color-sand); }
+.rifa-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(18, 28, 36, 0.55) 0%, rgba(18, 28, 36, 0.78) 65%, rgba(18, 28, 36, 0.9) 100%);
+}
+.rifa-hero-content { position: relative; z-index: 2; max-width: 640px; padding: var(--space-lg) 0 var(--space-xl); }
+.rifa-hero h1 { color: var(--color-white); font-size: clamp(2.3rem, 4.6vw, 3.4rem); margin-bottom: 1.1rem; text-shadow: 0 4px 24px rgba(0,0,0,0.35); }
+.rifa-hero-subtitle { font-size: 1.1rem; color: rgba(255, 253, 249, 0.94); margin-bottom: 2rem; max-width: 560px; }
 
-.rifa-summary-section { padding-top: var(--space-xl); padding-bottom: var(--space-md); background: var(--color-sand); }
+.rifa-summary-section { padding-top: var(--space-xl); padding-bottom: var(--space-md); background: linear-gradient(180deg, var(--color-sand) 0%, var(--color-blue-whisper) 100%); }
 .rifa-summary {
   background: var(--color-white);
   border-radius: var(--radius-lg);
@@ -46,7 +49,7 @@
 .rifa-purpose h3 { margin: 0.6rem 0 0.75rem; font-size: 1.3rem; }
 .rifa-purpose p { color: var(--color-text-soft); }
 
-.rifa-numbers-section { background: var(--color-white); }
+.rifa-numbers-section { background: linear-gradient(180deg, var(--color-blue-whisper) 0%, var(--color-white) 18%); }
 
 .rifa-draw-info {
   display: flex;
@@ -104,7 +107,7 @@
 .rifa-cell.is-sold { background: var(--color-green-accent); border-color: var(--color-green-accent); color: var(--color-white); cursor: not-allowed; }
 .rifa-cell:disabled { opacity: 0.9; }
 
-.rifa-wall-section { background: var(--color-sand); }
+.rifa-wall-section { background: linear-gradient(180deg, var(--color-white) 0%, var(--color-sand) 100%); }
 .rifa-wall {
   display: flex;
   flex-wrap: wrap;
