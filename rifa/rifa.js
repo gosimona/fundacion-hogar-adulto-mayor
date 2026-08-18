@@ -26,6 +26,11 @@
   var whatsappBtn = document.getElementById('rifa-whatsapp-btn');
   var modalDoneBtn = document.getElementById('rifa-modal-done');
 
+  var rulesBackdrop = document.getElementById('rifa-rules-modal-backdrop');
+  var rulesClose = document.getElementById('rifa-rules-close');
+  var rulesOkBtn = document.getElementById('rifa-rules-ok');
+  var rulesOpenLinks = document.querySelectorAll('.js-rifa-rules-open');
+
   var cellsByNumber = {};
   var currentNumber = null;
   var lastStatuses = {};
@@ -129,6 +134,24 @@
   modalDoneBtn.addEventListener('click', closeModal);
   modalBackdrop.addEventListener('click', function (e) {
     if (e.target === modalBackdrop) closeModal();
+  });
+
+  function openRulesModal(e) {
+    if (e) e.preventDefault();
+    rulesBackdrop.hidden = false;
+  }
+
+  function closeRulesModal() {
+    rulesBackdrop.hidden = true;
+  }
+
+  rulesOpenLinks.forEach(function (link) {
+    link.addEventListener('click', openRulesModal);
+  });
+  rulesClose.addEventListener('click', closeRulesModal);
+  rulesOkBtn.addEventListener('click', closeRulesModal);
+  rulesBackdrop.addEventListener('click', function (e) {
+    if (e.target === rulesBackdrop) closeRulesModal();
   });
 
   showWallCheckbox.addEventListener('change', function () {

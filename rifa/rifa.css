@@ -12,8 +12,10 @@
 .rifa-hero-bg {
   position: absolute;
   inset: 0;
-  background-size: cover;
-  background-position: center 35%;
+  background-color: #121c24;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .rifa-hero-overlay {
   position: absolute;
@@ -65,6 +67,10 @@
 .rifa-draw-info span { font-size: 1.4rem; flex-shrink: 0; }
 .rifa-draw-info p { margin: 0; }
 .rifa-draw-info strong { color: var(--color-blue-deep); }
+
+.rifa-rules-linktext { text-align: center; margin: -0.5rem 0 var(--space-md); font-size: 0.92rem; }
+.rifa-rules-linktext a { color: var(--color-blue-deep); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.rifa-rules-linktext a:hover { color: var(--color-blue); }
 
 .rifa-legend {
   display: flex;
@@ -194,6 +200,23 @@
 .rifa-payment-method p { font-size: 0.88rem; color: var(--color-text-soft); margin: 0; }
 #rifa-modal-done { margin-top: 0.75rem; }
 
+.rifa-rules-modal { max-width: 620px; }
+.rifa-rules-body {
+  max-height: 55vh;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+  margin-bottom: 1.25rem;
+  border-top: 1px solid var(--color-sand-deep);
+  border-bottom: 1px solid var(--color-sand-deep);
+  padding-top: 1rem;
+  padding-bottom: 0.25rem;
+}
+.rifa-rules-body h4 { font-size: 0.98rem; color: var(--color-blue-deep); margin: 1.1rem 0 0.35rem; }
+.rifa-rules-body h4:first-child { margin-top: 0; }
+.rifa-rules-body p { font-size: 0.88rem; color: var(--color-text-soft); margin: 0; line-height: 1.55; }
+.rifa-rules-footer { margin-top: 1.1rem !important; font-style: italic; text-align: center; }
+#rifa-rules-ok { margin-top: 0; }
+
 @media (max-width: 600px) {
   .rifa-grid { grid-template-columns: repeat(auto-fill, minmax(38px, 1fr)); gap: 0.3rem; }
   .rifa-cell { min-height: 38px; font-size: 0.72rem; }
@@ -202,6 +225,6 @@
 
 @media (max-width: 700px) {
   .rifa-hero { min-height: 78vh; }
-  .rifa-hero-bg { background-position: center 38%; }
+  .rifa-hero-bg { background-position: center; }
   .rifa-hero-overlay { background: linear-gradient(180deg, rgba(18, 28, 36, 0.3) 0%, rgba(18, 28, 36, 0.6) 60%, rgba(18, 28, 36, 0.88) 100%); }
 }
