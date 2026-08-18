@@ -1,6 +1,5 @@
 const { getPool } = require('../../lib/db');
 
-const HOLD_MINUTES = 45;
 const PRICE_PER_NUMBER = 25000;
 const ABONO_DEADLINE = '2026-10-23 23:59:59-05';
 
@@ -17,14 +16,10 @@ module.exports = async (req, res) => {
       SELECT number, amount_paid,
         CASE
           WHEN status = 'sold' THEN 'sold'
-          WHEN status = 'reserved' AND amount_paid = 0 AND reserved_at < now() - interval '${HOLD_MINUTES} minutes'
+          WHEN status = 'reserved' AND now() > '${ABONO_DEADLINE}'::timestamptz
             THEN 'available'
-          WHEN status = 'reserved' AND amount_paid > 0 AND now() > '${ABONO_DEADLINE}'::timestamptz
-            THEN 'available'
-          WHEN status = 'reserved' AND amount_paid > 0
-            THEN 'apartado'
           WHEN status = 'reserved'
-            THEN 'reserved'
+            THEN 'apartado'
           ELSE 'available'
         END AS status
       FROM rifa_numeros
@@ -42,12 +37,10 @@ module.exports = async (req, res) => {
 
     let sold = 0;
     let apartado = 0;
-    let reserved = 0;
     let available = 0;
     numberRows.forEach((r) => {
       if (r.status === 'sold') sold++;
       else if (r.status === 'apartado') apartado++;
-      else if (r.status === 'reserved') reserved++;
       else available++;
     });
 
@@ -56,7 +49,6 @@ module.exports = async (req, res) => {
       summary: {
         sold,
         apartado,
-        reserved,
         available,
         total: numberRows.length,
         amountRaisedCOP: Number(totalRows[0].total),

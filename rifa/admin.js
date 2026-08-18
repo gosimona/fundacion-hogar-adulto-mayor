@@ -70,7 +70,7 @@
       tr.appendChild(tdNumber);
 
       var tdStatus = document.createElement('td');
-      var statusLabels = { sold: 'Vendido', apartado: 'Apartado (abono)', reserved: 'Reservado' };
+      var statusLabels = { sold: 'Vendido', apartado: 'Apartado' };
       tdStatus.textContent = statusLabels[item.status] || item.status;
       tr.appendChild(tdStatus);
 

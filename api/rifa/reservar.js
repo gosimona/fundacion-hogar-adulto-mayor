@@ -1,6 +1,5 @@
 const { getPool } = require('../../lib/db');
 
-const HOLD_MINUTES = 45;
 const ABONO_DEADLINE = '2026-10-23 23:59:59-05';
 
 function parseBody(req) {
@@ -57,8 +56,7 @@ module.exports = async (req, res) => {
        WHERE number = $1
          AND (
            status = 'available'
-           OR (status = 'reserved' AND amount_paid = 0 AND reserved_at < now() - interval '${HOLD_MINUTES} minutes')
-           OR (status = 'reserved' AND amount_paid > 0 AND now() > '${ABONO_DEADLINE}'::timestamptz)
+           OR (status = 'reserved' AND now() > '${ABONO_DEADLINE}'::timestamptz)
          )
        RETURNING number, status, reserved_at`,
       [number, buyerName, buyerPhone, wallDisplayName, showOnWall]
@@ -73,7 +71,6 @@ module.exports = async (req, res) => {
       number: rows[0].number,
       status: rows[0].status,
       reservedAt: rows[0].reserved_at,
-      holdMinutes: HOLD_MINUTES,
     });
   } catch (err) {
     console.error('rifa/reservar error', err);

@@ -59,7 +59,7 @@
   }
 
   function applyCellStatus(cell, status) {
-    cell.classList.remove('is-available', 'is-reserved', 'is-apartado', 'is-sold');
+    cell.classList.remove('is-available', 'is-apartado', 'is-sold');
     cell.classList.add('is-' + status);
     cell.disabled = status !== 'available';
   }
@@ -204,13 +204,13 @@
     stepForm.hidden = true;
     stepPayment.hidden = false;
 
-    var message = 'Hola, reservé el número ' + pad3(number) +
+    var message = 'Hola, aparté el número ' + pad3(number) +
       ' de la Rifa del Novillo. Quiero enviar el comprobante de pago (completo o abono).';
     whatsappBtn.href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message);
 
-    lastStatuses[number] = 'reserved';
+    lastStatuses[number] = 'apartado';
     var cell = cellsByNumber[number];
-    if (cell) applyCellStatus(cell, 'reserved');
+    if (cell) applyCellStatus(cell, 'apartado');
   }
 
   buildGrid();

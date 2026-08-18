@@ -84,7 +84,6 @@
 .rifa-legend span { display: inline-flex; align-items: center; gap: 0.4rem; }
 .rifa-swatch { display: inline-block; width: 14px; height: 14px; border-radius: 4px; }
 .rifa-swatch.is-available { background: var(--color-white); border: 1.5px solid var(--color-sand-deep); }
-.rifa-swatch.is-reserved { background: var(--color-blue-whisper); border: 1.5px solid var(--color-blue-soft); }
 .rifa-swatch.is-apartado { background: #f6e2c1; border: 1.5px solid #d9a441; }
 .rifa-swatch.is-sold { background: var(--color-green-accent); border: 1.5px solid var(--color-green-accent); }
 
@@ -107,7 +106,6 @@
   transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
 }
 .rifa-cell.is-available:hover { border-color: var(--color-blue); background: var(--color-blue-whisper); transform: translateY(-2px); }
-.rifa-cell.is-reserved { background: var(--color-blue-whisper); border-color: var(--color-blue-soft); color: var(--color-blue-deep); cursor: not-allowed; }
 .rifa-cell.is-apartado { background: #f6e2c1; border-color: #d9a441; color: #8a5a13; cursor: not-allowed; }
 .rifa-cell.is-sold { background: var(--color-green-accent); border-color: var(--color-green-accent); color: var(--color-white); cursor: not-allowed; }
 .rifa-cell:disabled { opacity: 0.9; }

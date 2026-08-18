@@ -1,7 +1,6 @@
 const { getPool } = require('../../lib/db');
 const { isAuthorized } = require('../../lib/adminAuth');
 
-const HOLD_MINUTES = 45;
 const ABONO_DEADLINE = '2026-10-23 23:59:59-05';
 const PRICE_PER_NUMBER = 25000;
 
@@ -21,14 +20,10 @@ module.exports = async (req, res) => {
       SELECT number, amount_paid,
         CASE
           WHEN status = 'sold' THEN 'sold'
-          WHEN status = 'reserved' AND amount_paid = 0 AND reserved_at < now() - interval '${HOLD_MINUTES} minutes'
+          WHEN status = 'reserved' AND now() > '${ABONO_DEADLINE}'::timestamptz
             THEN 'available'
-          WHEN status = 'reserved' AND amount_paid > 0 AND now() > '${ABONO_DEADLINE}'::timestamptz
-            THEN 'available'
-          WHEN status = 'reserved' AND amount_paid > 0
-            THEN 'apartado'
           WHEN status = 'reserved'
-            THEN 'reserved'
+            THEN 'apartado'
           ELSE 'available'
         END AS effective_status,
         buyer_name, buyer_phone, wall_display_name, show_on_wall,
