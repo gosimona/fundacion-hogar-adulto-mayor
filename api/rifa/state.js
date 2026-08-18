@@ -27,10 +27,17 @@ module.exports = async (req, res) => {
     `);
 
     const { rows: wallRows } = await pool.query(`
-      SELECT number, wall_display_name
-      FROM rifa_numeros
-      WHERE status = 'sold' AND show_on_wall = true
-      ORDER BY sold_at DESC
+      WITH buyer_totals AS (
+        SELECT buyer_phone, COUNT(*) AS ticket_count
+        FROM rifa_numeros
+        WHERE status = 'sold'
+        GROUP BY buyer_phone
+      )
+      SELECT r.number, r.wall_display_name
+      FROM rifa_numeros r
+      JOIN buyer_totals t ON t.buyer_phone = r.buyer_phone
+      WHERE r.status = 'sold' AND r.show_on_wall = true
+      ORDER BY t.ticket_count DESC, r.sold_at DESC
     `);
 
     const { rows: totalRows } = await pool.query(`SELECT COALESCE(SUM(amount_paid), 0) AS total FROM rifa_numeros`);
