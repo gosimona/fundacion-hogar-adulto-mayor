@@ -2,7 +2,7 @@ const { getPool } = require('../../lib/db');
 const { isAuthorized } = require('../../lib/adminAuth');
 
 const HOLD_MINUTES = 45;
-const ABONO_DEADLINE = '2026-11-01 23:59:59-05';
+const ABONO_DEADLINE = '2026-10-23 23:59:59-05';
 const PRICE_PER_NUMBER = 25000;
 
 module.exports = async (req, res) => {
