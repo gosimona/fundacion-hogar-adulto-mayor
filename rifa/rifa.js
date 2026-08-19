@@ -205,7 +205,7 @@
     stepPayment.hidden = false;
 
     var message = 'Hola, aparté el número ' + pad3(number) +
-      ' de la Rifa del Novillo. Quiero enviar el comprobante de pago (completo o abono).';
+      ' de la Rifa de la Ternera. Quiero enviar el comprobante de pago (completo o abono).';
     whatsappBtn.href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message);
 
     lastStatuses[number] = 'apartado';
