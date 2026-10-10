@@ -32,12 +32,22 @@ module.exports = async (req, res) => {
         FROM rifa_numeros
         WHERE status = 'sold'
         GROUP BY buyer_phone
+      ),
+      wall_names AS (
+        SELECT lower(btrim(wall_display_name)) AS name_key,
+               (array_agg(btrim(wall_display_name) ORDER BY sold_at))[1] AS display_name,
+               MIN(number) AS number,
+               MIN(sold_at) AS first_sold_at,
+               array_agg(DISTINCT buyer_phone) AS phones
+        FROM rifa_numeros
+        WHERE status = 'sold' AND show_on_wall = true
+        GROUP BY lower(btrim(wall_display_name))
       )
-      SELECT r.number, r.wall_display_name
-      FROM rifa_numeros r
-      JOIN buyer_totals t ON t.buyer_phone = r.buyer_phone
-      WHERE r.status = 'sold' AND r.show_on_wall = true
-      ORDER BY t.ticket_count DESC, r.sold_at DESC
+      SELECT w.number, w.display_name AS wall_display_name
+      FROM wall_names w
+      ORDER BY
+        (SELECT COALESCE(SUM(t.ticket_count), 0) FROM buyer_totals t WHERE t.buyer_phone = ANY(w.phones)) DESC,
+        w.first_sold_at ASC
     `);
 
     const { rows: totalRows } = await pool.query(`SELECT COALESCE(SUM(amount_paid), 0) AS total FROM rifa_numeros`);
