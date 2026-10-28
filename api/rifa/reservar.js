@@ -1,6 +1,6 @@
 const { getPool } = require('../../lib/db');
 
-const ABONO_DEADLINE = '2026-10-23 23:59:59-05';
+const ABONO_DEADLINE = '2026-11-06 23:59:59-05';
 
 function parseBody(req) {
   if (req.body && typeof req.body === 'object') return req.body;
@@ -54,6 +54,7 @@ module.exports = async (req, res) => {
            amount_paid = 0,
            sold_at = NULL
        WHERE number = $1
+         AND now() <= '${ABONO_DEADLINE}'::timestamptz
          AND (
            status = 'available'
            OR (status = 'reserved' AND now() > '${ABONO_DEADLINE}'::timestamptz)

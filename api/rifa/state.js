@@ -1,7 +1,7 @@
 const { getPool } = require('../../lib/db');
 
 const PRICE_PER_NUMBER = 25000;
-const ABONO_DEADLINE = '2026-10-23 23:59:59-05';
+const ABONO_DEADLINE = '2026-11-06 23:59:59-05';
 
 module.exports = async (req, res) => {
   if (req.method !== 'GET') {
