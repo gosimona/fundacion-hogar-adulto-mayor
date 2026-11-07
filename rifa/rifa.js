@@ -130,7 +130,7 @@
       var name = namesByNumber[number];
       infoText.textContent = name
         ? 'Este número fue comprado por ' + name + '. ¡Gracias por tu aporte!'
-        : 'Este número ya fue comprado (aporte anónimo). ¡Gracias por el apoyo!';
+        : 'Este número ya fue comprado. ¡Gracias por el apoyo!';
     } else {
       infoText.textContent = 'Este número está apartado y a la espera de su pago.';
     }

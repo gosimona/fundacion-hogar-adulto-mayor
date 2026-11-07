@@ -22,7 +22,11 @@ module.exports = async (req, res) => {
             THEN 'apartado'
           ELSE 'available'
         END AS status,
-        CASE WHEN status = 'sold' AND show_on_wall = true THEN btrim(wall_display_name) END AS display_name
+        CASE
+          WHEN status = 'sold' AND show_on_wall = true AND btrim(COALESCE(wall_display_name, '')) <> ''
+            THEN btrim(wall_display_name)
+          WHEN status = 'sold' THEN btrim(buyer_name)
+        END AS display_name
       FROM rifa_numeros
       ORDER BY number
     `);
