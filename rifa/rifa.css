@@ -44,6 +44,39 @@
   margin: 0.25rem 0 1.4rem;
   box-shadow: 0 0 0 6px rgba(240, 201, 107, 0.35), 0 24px 50px -18px rgba(0, 0, 0, 0.6);
 }
+.rifa-winner { animation: rifa-winner-pulse 1.3s ease-in-out infinite; transform-origin: center; }
+.rifa-winner-number { animation: rifa-winner-glow 1.3s ease-in-out infinite; }
+@keyframes rifa-winner-pulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 6px rgba(240, 201, 107, 0.35), 0 24px 50px -18px rgba(0, 0, 0, 0.6); }
+  50% { transform: scale(1.09); box-shadow: 0 0 0 16px rgba(240, 201, 107, 0.12), 0 0 60px 8px rgba(240, 201, 107, 0.65), 0 24px 50px -18px rgba(0, 0, 0, 0.6); }
+}
+@keyframes rifa-winner-glow {
+  0%, 100% { text-shadow: 0 0 0 rgba(255, 255, 255, 0); }
+  50% { text-shadow: 0 0 22px rgba(255, 255, 255, 0.9), 0 0 8px rgba(255, 244, 200, 0.9); }
+}
+
+/* Serpentinas y confeti */
+.rifa-confetti { position: absolute; inset: 0; z-index: 3; overflow: hidden; pointer-events: none; }
+.rifa-confetti i {
+  position: absolute;
+  top: -50px;
+  display: block;
+  border-radius: 3px;
+  opacity: 0.95;
+  animation: rifa-confetti-fall linear infinite;
+}
+.rifa-confetti i.is-dot { border-radius: 50%; }
+@keyframes rifa-confetti-fall {
+  0% { transform: translate3d(0, -50px, 0) rotate(0deg) rotateY(0deg); }
+  25% { transform: translate3d(22px, 25vh, 0) rotate(120deg) rotateY(180deg); }
+  50% { transform: translate3d(-18px, 50vh, 0) rotate(260deg) rotateY(360deg); }
+  75% { transform: translate3d(20px, 75vh, 0) rotate(380deg) rotateY(540deg); }
+  100% { transform: translate3d(-8px, 110vh, 0) rotate(520deg) rotateY(720deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rifa-winner, .rifa-winner-number { animation: none; }
+  .rifa-confetti { display: none; }
+}
 .rifa-winner-label { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
 .rifa-winner-number { font-family: var(--font-display); font-weight: 600; font-size: clamp(4rem, 14vw, 6.5rem); line-height: 1; }
 .rifa-thanks p { margin: 0 0 0.7rem; font-size: 0.95rem; line-height: 1.55; color: var(--color-text); }
