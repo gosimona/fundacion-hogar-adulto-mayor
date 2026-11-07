@@ -23,6 +23,7 @@ module.exports = async (req, res) => {
           ELSE 'available'
         END AS status,
         CASE
+          WHEN number = 151 THEN NULL
           WHEN status = 'sold' AND show_on_wall = true AND btrim(COALESCE(wall_display_name, '')) <> ''
             THEN btrim(wall_display_name)
           WHEN status = 'sold' THEN btrim(buyer_name)

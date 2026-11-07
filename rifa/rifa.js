@@ -127,6 +127,8 @@
     infoNumber.textContent = pad3(number);
     if (status === 'closed') {
       infoText.textContent = 'La rifa ya finalizó y el número ganador fue el 151. ¡Gracias por tu apoyo!';
+    } else if (Number(number) === 151) {
+      infoText.textContent = '🏆 ¡Este es el número ganador! Felicitaciones de todo corazón a su dueño.';
     } else if (status === 'sold') {
       var name = namesByNumber[number];
       infoText.textContent = name
