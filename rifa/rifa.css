@@ -106,8 +106,10 @@
   transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
 }
 .rifa-cell.is-available:hover { border-color: var(--color-blue); background: var(--color-blue-whisper); transform: translateY(-2px); }
-.rifa-cell.is-apartado { background: #f6e2c1; border-color: #d9a441; color: #8a5a13; cursor: not-allowed; }
-.rifa-cell.is-sold { background: var(--color-green-accent); border-color: var(--color-green-accent); color: var(--color-white); cursor: not-allowed; }
+.rifa-cell.is-apartado { background: #f6e2c1; border-color: #d9a441; color: #8a5a13; cursor: pointer; }
+.rifa-cell.is-sold { background: var(--color-green-accent); border-color: var(--color-green-accent); color: var(--color-white); cursor: pointer; }
+.rifa-info-modal { max-width: 380px; text-align: center; }
+.rifa-info-text { color: var(--color-text-soft); margin: 0.5rem 0 1.5rem; font-size: 1rem; }
 .rifa-cell:disabled { opacity: 0.9; }
 
 .rifa-wall-section {

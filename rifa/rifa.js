@@ -31,9 +31,16 @@
   var rulesOkBtn = document.getElementById('rifa-rules-ok');
   var rulesOpenLinks = document.querySelectorAll('.js-rifa-rules-open');
 
+  var infoBackdrop = document.getElementById('rifa-info-modal-backdrop');
+  var infoNumber = document.getElementById('rifa-info-number');
+  var infoText = document.getElementById('rifa-info-text');
+  var infoClose = document.getElementById('rifa-info-close');
+  var infoOkBtn = document.getElementById('rifa-info-ok');
+
   var cellsByNumber = {};
   var currentNumber = null;
   var lastStatuses = {};
+  var namesByNumber = {};
 
   function pad3(n) {
     return String(n).padStart(3, '0');
@@ -61,11 +68,11 @@
   function applyCellStatus(cell, status) {
     cell.classList.remove('is-available', 'is-apartado', 'is-sold');
     cell.classList.add('is-' + status);
-    cell.disabled = status !== 'available';
   }
 
   function renderState(data) {
     data.numbers.forEach(function (item) {
+      namesByNumber[item.number] = item.displayName || null;
       if (lastStatuses[item.number] === item.status) return;
       lastStatuses[item.number] = item.status;
       var cell = cellsByNumber[item.number];
@@ -109,10 +116,36 @@
 
   function onCellClick(e) {
     var btn = e.currentTarget;
-    if (btn.disabled) return;
+    if (!btn.classList.contains('is-available')) {
+      openInfo(btn.dataset.number, btn.classList.contains('is-sold') ? 'sold' : 'apartado');
+      return;
+    }
     currentNumber = btn.dataset.number;
     openModal(currentNumber);
   }
+
+  function openInfo(number, status) {
+    infoNumber.textContent = pad3(number);
+    if (status === 'sold') {
+      var name = namesByNumber[number];
+      infoText.textContent = name
+        ? 'Este número fue comprado por ' + name + '. ¡Gracias por tu aporte!'
+        : 'Este número ya fue comprado (aporte anónimo). ¡Gracias por el apoyo!';
+    } else {
+      infoText.textContent = 'Este número está apartado y a la espera de su pago.';
+    }
+    infoBackdrop.hidden = false;
+  }
+
+  function closeInfo() {
+    infoBackdrop.hidden = true;
+  }
+
+  infoClose.addEventListener('click', closeInfo);
+  infoOkBtn.addEventListener('click', closeInfo);
+  infoBackdrop.addEventListener('click', function (e) {
+    if (e.target === infoBackdrop) closeInfo();
+  });
 
   function openModal(number) {
     modalTitleNumber.textContent = pad3(number);

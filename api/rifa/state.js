@@ -21,7 +21,8 @@ module.exports = async (req, res) => {
           WHEN status = 'reserved'
             THEN 'apartado'
           ELSE 'available'
-        END AS status
+        END AS status,
+        CASE WHEN status = 'sold' AND show_on_wall = true THEN btrim(wall_display_name) END AS display_name
       FROM rifa_numeros
       ORDER BY number
     `);
@@ -62,7 +63,9 @@ module.exports = async (req, res) => {
     });
 
     res.status(200).json({
-      numbers: numberRows.map((r) => ({ number: r.number, status: r.status })),
+      numbers: numberRows.map((r) => (r.display_name
+        ? { number: r.number, status: r.status, displayName: r.display_name }
+        : { number: r.number, status: r.status })),
       summary: {
         sold,
         apartado,
