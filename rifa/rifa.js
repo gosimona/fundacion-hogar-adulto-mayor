@@ -251,7 +251,7 @@
 
   function buildConfetti() {
     var box = document.getElementById('rifa-confetti');
-    if (!box || (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
+    if (!box) return;
     var colors = ['#f0c96b', '#e8505b', '#3d7a94', '#7fb685', '#ffffff', '#f4a259', '#b784d6'];
     var frag = document.createDocumentFragment();
     for (var i = 0; i < 46; i++) {
@@ -262,7 +262,7 @@
       p.style.width = (ribbon ? 5 + Math.random() * 3 : 8 + Math.random() * 4) + 'px';
       p.style.height = (ribbon ? 22 + Math.random() * 26 : 8 + Math.random() * 4) + 'px';
       p.style.background = colors[Math.floor(Math.random() * colors.length)];
-      p.style.animationDuration = (4.5 + Math.random() * 4.5) + 's';
+      p.style.setProperty('animation-duration', (4.5 + Math.random() * 4.5) + 's', 'important');
       p.style.animationDelay = (-Math.random() * 8) + 's';
       frag.appendChild(p);
     }

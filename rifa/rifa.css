@@ -55,6 +55,14 @@
   50% { text-shadow: 0 0 22px rgba(255, 255, 255, 0.9), 0 0 8px rgba(255, 244, 200, 0.9); }
 }
 
+/* La celebración del ganador se muestra siempre, incluso con "reducir movimiento"
+   (se anula la regla general de css/styles.css solo para estos elementos). */
+@media (prefers-reduced-motion: reduce) {
+  .rifa-winner { animation-duration: 1.3s !important; animation-iteration-count: infinite !important; }
+  .rifa-winner-number { animation-duration: 1.3s !important; animation-iteration-count: infinite !important; }
+  .rifa-confetti i { animation-iteration-count: infinite !important; }
+}
+
 /* Serpentinas y confeti */
 .rifa-confetti { position: absolute; inset: 0; z-index: 3; overflow: hidden; pointer-events: none; }
 .rifa-confetti i {
@@ -72,10 +80,6 @@
   50% { transform: translate3d(-18px, 50vh, 0) rotate(260deg) rotateY(360deg); }
   75% { transform: translate3d(20px, 75vh, 0) rotate(380deg) rotateY(540deg); }
   100% { transform: translate3d(-8px, 110vh, 0) rotate(520deg) rotateY(720deg); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .rifa-winner, .rifa-winner-number { animation: none; }
-  .rifa-confetti { display: none; }
 }
 .rifa-winner-label { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
 .rifa-winner-number { font-family: var(--font-display); font-weight: 600; font-size: clamp(4rem, 14vw, 6.5rem); line-height: 1; }
