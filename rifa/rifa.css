@@ -33,6 +33,19 @@
   margin-bottom: 1.75rem;
   box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.55);
 }
+.rifa-winner {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(135deg, #f6e2c1, #f0c96b);
+  color: #3a2a06;
+  border-radius: var(--radius-lg);
+  padding: 0.9rem 2.5rem 1.1rem;
+  margin: 0.25rem 0 1.4rem;
+  box-shadow: 0 0 0 6px rgba(240, 201, 107, 0.35), 0 24px 50px -18px rgba(0, 0, 0, 0.6);
+}
+.rifa-winner-label { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+.rifa-winner-number { font-family: var(--font-display); font-weight: 600; font-size: clamp(4rem, 14vw, 6.5rem); line-height: 1; }
 .rifa-thanks p { margin: 0 0 0.7rem; font-size: 0.95rem; line-height: 1.55; color: var(--color-text); }
 .rifa-thanks strong { color: var(--color-blue-deep); }
 .rifa-thanks .rifa-thanks-title {

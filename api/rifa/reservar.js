@@ -16,6 +16,10 @@ module.exports = async (req, res) => {
     return;
   }
 
+  // La rifa ya se sorteó: no se aceptan más reservas.
+  res.status(409).json({ error: 'closed' });
+  return;
+
   const body = parseBody(req);
   const number = Number.parseInt(body.number, 10);
   const buyerName = typeof body.buyerName === 'string' ? body.buyerName.trim() : '';

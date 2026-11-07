@@ -116,17 +116,18 @@
 
   function onCellClick(e) {
     var btn = e.currentTarget;
-    if (!btn.classList.contains('is-available')) {
-      openInfo(btn.dataset.number, btn.classList.contains('is-sold') ? 'sold' : 'apartado');
+    if (btn.classList.contains('is-available')) {
+      openInfo(btn.dataset.number, 'closed');
       return;
     }
-    currentNumber = btn.dataset.number;
-    openModal(currentNumber);
+    openInfo(btn.dataset.number, btn.classList.contains('is-sold') ? 'sold' : 'apartado');
   }
 
   function openInfo(number, status) {
     infoNumber.textContent = pad3(number);
-    if (status === 'sold') {
+    if (status === 'closed') {
+      infoText.textContent = 'La rifa ya finalizó y el número ganador fue el 151. ¡Gracias por tu apoyo!';
+    } else if (status === 'sold') {
       var name = namesByNumber[number];
       infoText.textContent = name
         ? 'Este número fue comprado por ' + name + '. ¡Gracias por tu aporte!'
