@@ -1,0 +1,10 @@
+# Archivos de trabajo que no deben publicarse en el sitio
+*.xlsx
+*.xls
+*.docx
+*.csv
+~$*
+WhatsApp Image*
+.env*
+.claude/
+scripts/
