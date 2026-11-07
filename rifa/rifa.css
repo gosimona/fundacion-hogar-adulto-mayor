@@ -23,6 +23,27 @@
   background: linear-gradient(180deg, rgba(18, 28, 36, 0.4) 0%, rgba(18, 28, 36, 0.65) 65%, rgba(18, 28, 36, 0.85) 100%);
 }
 .rifa-hero-content { position: relative; z-index: 2; max-width: 640px; padding: var(--space-lg) 0 var(--space-xl); }
+
+.rifa-thanks {
+  background: rgba(255, 253, 249, 0.94);
+  color: var(--color-text);
+  border-left: 5px solid #d9a441;
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.4rem;
+  margin-bottom: 1.75rem;
+  box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.55);
+}
+.rifa-thanks p { margin: 0 0 0.7rem; font-size: 0.95rem; line-height: 1.55; color: var(--color-text); }
+.rifa-thanks strong { color: var(--color-blue-deep); }
+.rifa-thanks .rifa-thanks-title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-blue-deep);
+  margin-bottom: 0.6rem;
+}
+.rifa-thanks .rifa-thanks-sign { margin: 0.9rem 0 0; font-family: var(--font-display); font-style: italic; color: var(--color-blue-deep); }
 .rifa-hero h1 { color: var(--color-white); font-size: clamp(2.3rem, 4.6vw, 3.4rem); margin-bottom: 1.1rem; text-shadow: 0 4px 24px rgba(0,0,0,0.35); }
 .rifa-hero-subtitle { font-size: 1.1rem; color: rgba(255, 253, 249, 0.94); margin-bottom: 2rem; max-width: 560px; }
 
